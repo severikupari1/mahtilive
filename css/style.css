@@ -162,7 +162,7 @@ a:hover {
   Header Styling
 ================================================== */
 #header {
-  background: #199EB8;
+  background: black;
   height: 70px;
 }
 
@@ -980,5 +980,5 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 
 .min-height-200px {
-	min-height: 200px;
+
 }
