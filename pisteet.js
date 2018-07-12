@@ -36,6 +36,24 @@
         }
       });
             
+    var logout = document.getElementById("logout");
+    logout.addEventListener("click",function(e){
+        console.log("Painettu");
+        firebase.auth().signOut().then(function() {
+            // Sign-out successful.
+          }).catch(function(error) {
+            // An error happened.
+          });
+        
+    },false);
+
+
+
+    //Logic
+
+    var database = firebase.database();
+
+
     
 
 
