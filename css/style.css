@@ -979,10 +979,13 @@ body.mobile-nav-active #mobile-nav-toggle {
   }
 }
 
-.min-height-200px {
 
-}
 
 .ympyra {
 	border-radius: 20%;
+}
+
+.koko100{
+  min-height: 100px !important;
+  min-width: 100px !important;
 }
