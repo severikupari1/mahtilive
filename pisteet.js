@@ -274,6 +274,37 @@
 
 
 
+    //nollaus
+
+    $("#nollauskaikki").click(function () {
+
+      // console.log("PAINETTU");
+
+      
+      
+          
+          docRef.update({
+            mahtipisteet:0,
+            mahtierat:0,
+            vieraserat: 0,
+            vieraspisteet:0
+
+          }).then(function () {
+            console.log("Saved to db");
+
+          }).catch(function (error) {
+            console.log("Got an error", error);
+
+          });
+        
+
+
+      
+
+    });
+
+
+
   });
 
 
