@@ -71,10 +71,10 @@
         
         const testi = doc.data();
         console.log(testi);
-        testi.pisteet++;
+        testi.mahtipisteet++;
         console.log(testi);
         docRef.set({
-          pisteet: testi.pisteet
+          mahtipisteet: testi.mahtipisteet
         }).then(function (){
           console.log("Saved to db");
   
@@ -95,6 +95,23 @@
     });
 
     $("#mahtipisteminus").click(function () {
+      docRef.get().then(function (doc){
+        
+        const testi = doc.data();
+        console.log(testi);
+        testi.mahtipisteet--;
+        console.log(testi);
+        docRef.set({
+          mahtipisteet: testi.mahtipisteet
+        }).then(function (){
+          console.log("Saved to db");
+  
+        }).catch(function (error){
+            console.log("Got an error",error);
+  
+        });
+        
+      })
 
 
     });
