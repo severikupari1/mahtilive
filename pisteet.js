@@ -9,14 +9,6 @@
   };
   firebase.initializeApp(config);
 
-  //get elements
-  const preObject = document.getElementById('object');
-
-  // Create reference
-  const dbRefObject = firebase.database().ref().child('object');
-
-  //synchronize object changes
-  dbRefObject.on('value', snap => console.log(snap.val()));
 
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
@@ -60,6 +52,24 @@
 
   $(document).ready(function () {
 
+
+    getRealTimeUpdates = function () {
+      docRef.onSnapshot(function (doc) {
+        if (doc && doc.exists) {
+          const allData = doc.data();
+          $("#mahtipistekentta").text(allData.mahtipisteet);
+          $("#mahtieratkentta").text(allData.mahtierat);
+          $("#vieraspistekentta").text(allData.vieraspisteet);
+          $("#vieraseratkentta").text(allData.vieraserat);
+          
+          
+        }
+      });
+    }
+
+
+    getRealTimeUpdates();
+
     // jQuery methods go here...
 
     //mahti
@@ -67,27 +77,29 @@
     $("#mahtipisteplus").click(function () {
 
 
-      docRef.get().then(function (doc){
-        
-        const testi = doc.data();
-        console.log(testi);
-        testi.mahtipisteet++;
-        console.log(testi);
-        docRef.update({
-          mahtipisteet: testi.mahtipisteet
-        }).then(function (){
-          console.log("Saved to db");
-  
-        }).catch(function (error){
-            console.log("Got an error",error);
-  
-        });
-        
-      })
-     
-      
+      docRef.get().then(function (doc) {
+        if (doc && doc.exists) {
+          const testi = doc.data();
+          console.log(testi);
+          testi.mahtipisteet++;
+          console.log(testi);
+          docRef.update({
+            mahtipisteet: testi.mahtipisteet
+          }).then(function () {
+            console.log("Saved to db");
 
-      
+          }).catch(function (error) {
+            console.log("Got an error", error);
+
+          });
+        }
+
+
+      })
+
+
+
+
 
 
       // database.ref('Mahti/1').pisteet 
@@ -95,66 +107,69 @@
     });
 
     $("#mahtipisteminus").click(function () {
-      docRef.get().then(function (doc){
-        
-        const testi = doc.data();
-        console.log(testi);
-        testi.mahtipisteet--;
-        console.log(testi);
-        docRef.update({
-          mahtipisteet: testi.mahtipisteet
-        }).then(function (){
-          console.log("Saved to db");
-  
-        }).catch(function (error){
-            console.log("Got an error",error);
-  
-        });
-        
+      docRef.get().then(function (doc) {
+        if (doc && doc.exists) {
+          const testi = doc.data();
+          console.log(testi);
+          testi.mahtipisteet--;
+          console.log(testi);
+          docRef.update({
+            mahtipisteet: testi.mahtipisteet
+          }).then(function () {
+            console.log("Saved to db");
+
+          }).catch(function (error) {
+            console.log("Got an error", error);
+
+          });
+
+        }
       })
 
 
     });
 
     $("#mahtieraplus").click(function () {
-      docRef.get().then(function (doc){
-        
-        const testi = doc.data();
-        console.log(testi);
-        testi.mahtierat++;
-        console.log(testi);
-        docRef.update({
-          mahtierat: testi.mahtierat
-        }).then(function (){
-          console.log("Saved to db");
-  
-        }).catch(function (error){
-            console.log("Got an error",error);
-  
-        });
-        
+      docRef.get().then(function (doc) {
+        if (doc && doc.exists) {
+          const testi = doc.data();
+          console.log(testi);
+          testi.mahtierat++;
+          console.log(testi);
+          docRef.update({
+            mahtierat: testi.mahtierat
+          }).then(function () {
+            console.log("Saved to db");
+
+          }).catch(function (error) {
+            console.log("Got an error", error);
+
+          });
+
+        }
       })
 
 
     });
 
     $("#mahtieraminus").click(function () {
-      docRef.get().then(function (doc){
-        
-        const testi = doc.data();
-        console.log(testi);
-        testi.mahtierat--;
-        console.log(testi);
-        docRef.update({
-          mahtierat: testi.mahtierat
-        }).then(function (){
-          console.log("Saved to db");
-  
-        }).catch(function (error){
-            console.log("Got an error",error);
-  
-        });
-        
+      docRef.get().then(function (doc) {
+        if (doc && doc.exists) {
+          const testi = doc.data();
+          console.log(testi);
+          testi.mahtierat--;
+          console.log(testi);
+          docRef.update({
+            mahtierat: testi.mahtierat
+          }).then(function () {
+            console.log("Saved to db");
+
+          }).catch(function (error) {
+            console.log("Got an error", error);
+
+          });
+
+        }
       })
 
     });
@@ -164,43 +179,45 @@
     $("#vieraspisteplus").click(function () {
 
 
-      docRef.get().then(function (doc){
-        
-        const testi = doc.data();
-        console.log(testi);
-        testi.vieraspisteet++;
-        console.log(testi);
-        docRef.update({
-          vieraspisteet: testi.vieraspisteet
-        }).then(function (){
-          console.log("Saved to db");
-  
-        }).catch(function (error){
-            console.log("Got an error",error);
-  
-        });
-        
+      docRef.get().then(function (doc) {
+        if (doc && doc.exists) {
+          const testi = doc.data();
+          console.log(testi);
+          testi.vieraspisteet++;
+          console.log(testi);
+          docRef.update({
+            vieraspisteet: testi.vieraspisteet
+          }).then(function () {
+            console.log("Saved to db");
+
+          }).catch(function (error) {
+            console.log("Got an error", error);
+
+          });
+
+        }
       })
 
     });
 
     $("#vieraspisteminus").click(function () {
-      docRef.get().then(function (doc){
-        
-        const testi = doc.data();
-        console.log(testi);
-        testi.vieraspisteet--;
-        console.log(testi);
-        docRef.update({
-          vieraspisteet: testi.vieraspisteet
-        }).then(function (){
-          console.log("Saved to db");
-  
-        }).catch(function (error){
-            console.log("Got an error",error);
-  
-        });
-        
+      docRef.get().then(function (doc) {
+        if (doc && doc.exists) {
+          const testi = doc.data();
+          console.log(testi);
+          testi.vieraspisteet--;
+          console.log(testi);
+          docRef.update({
+            vieraspisteet: testi.vieraspisteet
+          }).then(function () {
+            console.log("Saved to db");
+
+          }).catch(function (error) {
+            console.log("Got an error", error);
+
+          });
+
+        }
       })
 
     });
@@ -208,22 +225,23 @@
     $("#vieraseraplus").click(function () {
 
 
-       docRef.get().then(function (doc){
-        
-        const testi = doc.data();
-        console.log(testi);
-        testi.vieraserat++;
-        console.log(testi);
-        docRef.update({
-          vieraserat: testi.vieraserat
-        }).then(function (){
-          console.log("Saved to db");
-  
-        }).catch(function (error){
-            console.log("Got an error",error);
-  
-        });
-        
+      docRef.get().then(function (doc) {
+        if (doc && doc.exists) {
+          const testi = doc.data();
+          console.log(testi);
+          testi.vieraserat++;
+          console.log(testi);
+          docRef.update({
+            vieraserat: testi.vieraserat
+          }).then(function () {
+            console.log("Saved to db");
+
+          }).catch(function (error) {
+            console.log("Got an error", error);
+
+          });
+
+        }
       })
 
     });
@@ -231,23 +249,25 @@
     $("#vieraseraminus").click(function () {
 
       // console.log("PAINETTU");
-      
-      docRef.get().then(function (doc){
-        
-        const testi = doc.data();
-        console.log(testi);
-        testi.vieraserat--;
-        console.log(testi);
-        docRef.update({
-          vieraserat: testi.vieraserat
-        }).then(function (){
-          console.log("Saved to db");
-  
-        }).catch(function (error){
-            console.log("Got an error",error);
-  
-        });
-        
+
+      docRef.get().then(function (doc) {
+        if (doc && doc.exists) {
+          const testi = doc.data();
+          console.log(testi);
+          testi.vieraserat--;
+          console.log(testi);
+          docRef.update({
+            vieraserat: testi.vieraserat
+          }).then(function () {
+            console.log("Saved to db");
+
+          }).catch(function (error) {
+            console.log("Got an error", error);
+
+          });
+        }
+
+
       })
 
     });
