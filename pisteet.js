@@ -51,51 +51,83 @@
 
   //Logic
 
-  var database = firebase.database();
+  var firestore = firebase.firestore();
 
+  const mahtipisteplus1 = document.querySelector("#mahtipisteplus");
+
+  const docRef = firestore.doc("Mahti/peli");
 
 
   $(document).ready(function () {
 
     // jQuery methods go here...
 
+    //mahti
+
     $("#mahtipisteplus").click(function () {
+
+
+      docRef.get().then(function (doc){
+        
+        const testi = doc.data();
+        console.log(testi);
+        testi.pisteet++;
+        console.log(testi);
+        docRef.set({
+          pisteet: testi.pisteet
+        }).then(function (){
+          console.log("Saved to db");
+  
+        }).catch(function (error){
+            console.log("Got an error",error);
+  
+        });
+        
+      })
+     
       
+
+      
+
+
+      // database.ref('Mahti/1').pisteet 
 
     });
 
     $("#mahtipisteminus").click(function () {
-      
+
 
     });
 
     $("#mahtieraplus").click(function () {
-      
+
 
     });
 
     $("#mahtieraminus").click(function () {
-      
+
 
     });
 
+    //Vieras
+
     $("#vieraspisteplus").click(function () {
-      
+
 
     });
 
     $("#vieraspisteminus").click(function () {
-      
+
 
     });
 
     $("#vieraseraplus").click(function () {
-      
+
 
     });
 
     $("#vieraseraminus").click(function () {
-      
+
 
     });
 
