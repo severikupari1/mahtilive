@@ -61,8 +61,8 @@
           $("#mahtieratkentta").text(allData.mahtierat);
           $("#vieraspistekentta").text(allData.vieraspisteet);
           $("#vieraseratkentta").text(allData.vieraserat);
-          
-          
+
+
         }
       });
     }
@@ -280,27 +280,39 @@
 
       // console.log("PAINETTU");
 
-      
-      
-          
-          docRef.update({
-            mahtipisteet:0,
-            mahtierat:0,
-            vieraserat: 0,
-            vieraspisteet:0
 
-          }).then(function () {
-            console.log("Saved to db");
 
-          }).catch(function (error) {
-            console.log("Got an error", error);
 
-          });
+      docRef.update({
+        mahtipisteet: 0,
+        mahtierat: 0,
+        vieraserat: 0,
+        vieraspisteet: 0
+
+      }).then(function () {
+        console.log("Saved to db");
+
+      }).catch(function (error) {
+        console.log("Got an error", error);
+
+      });
+
+
+    });
+
+    $("#nollauspisteet").click(function () {
+      docRef.update({
+        mahtipisteet: 0,
         
+        vieraspisteet: 0
 
+      }).then(function () {
+        console.log("Saved to db");
 
-      
+      }).catch(function (error) {
+        console.log("Got an error", error);
 
+      });
     });
 
 
