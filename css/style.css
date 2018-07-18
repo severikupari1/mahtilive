@@ -991,10 +991,19 @@ body.mobile-nav-active #mobile-nav-toggle {
 }
 .circle-custom{
   
-  height: 25px;
   width: 25px;
-  background-color: #bbb;
+  width: 25px;
+  background-color: red;
   border-radius: 50%;
   display: inline-block;
-   
+  color: white;
+}
+.circle-custom1{
+  
+  width: 25px;
+  width: 25px;
+  background-color: blue;
+  border-radius: 50%;
+  display: inline-block;
+  color: white;
 }
