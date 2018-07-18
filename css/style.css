@@ -989,3 +989,12 @@ body.mobile-nav-active #mobile-nav-toggle {
   min-height: 100px !important;
   min-width: 100px !important;
 }
+.circle-custom{
+  
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+   
+}
