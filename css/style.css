@@ -1007,3 +1007,10 @@ body.mobile-nav-active #mobile-nav-toggle {
   display: inline-block;
   color: white;
 }
+#viewerCount{
+  /* width: 25%; */
+  /* border-radius: 40%; */
+  background-color: blue;
+  color: white;
+  
+}

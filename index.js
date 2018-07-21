@@ -38,6 +38,19 @@
 
       getRealTimeUpdatesIndex();
 });
+
+$.ajax({
+  type: 'GET',
+  url: 'https://api.twitch.tv/kraken/channels/maaninganmahtilive',
+  headers: {
+    'Client-ID': 'hq8jr4r5ffc2imsnoj2lkthf7wra86'
+  },
+  success: function(data) {
+
+    $("#viewerCount").text(data.views)
+    console.log(data);
+  }
+ });
   
    
   
