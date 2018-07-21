@@ -9,6 +9,15 @@
   };
   firebase.initializeApp(config);
 
+  var firestore = firebase.firestore();
+  var adminAuth = false;
+  const mahtipisteplus1 = document.querySelector("#mahtipisteplus");
+
+  const docRef = firestore.doc("Mahti/peli");
+  const docrefadmin = firestore.doc("Users/HSyVwTJzpoZBVRodUZww/administrators/zIePX1GPuDX4VNY8E3Kl");
+
+
+  
 
   firebase.auth().onAuthStateChanged(function (user) {
     if (user) {
@@ -20,6 +29,7 @@
       var isAnonymous = user.isAnonymous;
       var uid = user.uid;
       var providerData = user.providerData;
+      
       // ...
     } else {
       // User is signed out.
@@ -43,11 +53,16 @@
 
   //Logic
 
-  var firestore = firebase.firestore();
+  docrefadmin.onSnapshot(function (admin){
+    console.log(admin.data());
+    if (admin.email == firebase.auth().currentUser ){
+      adminAuth = true;
+      console.log("admin?");
+      
+    }
+  });
 
-  const mahtipisteplus1 = document.querySelector("#mahtipisteplus");
-
-  const docRef = firestore.doc("Mahti/peli");
+  
 
 
   $(document).ready(function () {
@@ -61,7 +76,7 @@
           $("#mahtieratkentta").text(allData.mahtierat);
           $("#vieraspistekentta").text(allData.vieraspisteet);
           $("#vieraseratkentta").text(allData.vieraserat);
-
+          
 
         }
       });
@@ -74,246 +89,250 @@
 
     //mahti
 
-    $("#mahtipisteplus").click(function () {
-
-
-      docRef.get().then(function (doc) {
-        if (doc && doc.exists) {
-          const testi = doc.data();
-          console.log(testi);
-          testi.mahtipisteet++;
-          console.log(testi);
-          docRef.update({
-            mahtipisteet: testi.mahtipisteet
-          }).then(function () {
-            console.log("Saved to db");
-
-          }).catch(function (error) {
-            console.log("Got an error", error);
-
-          });
-        }
-
-
-      })
-
-
-
-
-
-
-      // database.ref('Mahti/1').pisteet 
-
-    });
-
-    $("#mahtipisteminus").click(function () {
-      docRef.get().then(function (doc) {
-        if (doc && doc.exists) {
-          const testi = doc.data();
-          console.log(testi);
-          testi.mahtipisteet--;
-          console.log(testi);
-          docRef.update({
-            mahtipisteet: testi.mahtipisteet
-          }).then(function () {
-            console.log("Saved to db");
-
-          }).catch(function (error) {
-            console.log("Got an error", error);
-
-          });
-
-        }
-      })
-
-
-    });
-
-    $("#mahtieraplus").click(function () {
-      docRef.get().then(function (doc) {
-        if (doc && doc.exists) {
-          const testi = doc.data();
-          console.log(testi);
-          testi.mahtierat++;
-          console.log(testi);
-          docRef.update({
-            mahtierat: testi.mahtierat
-          }).then(function () {
-            console.log("Saved to db");
-
-          }).catch(function (error) {
-            console.log("Got an error", error);
-
-          });
-
-        }
-      })
-
-
-    });
-
-    $("#mahtieraminus").click(function () {
-      docRef.get().then(function (doc) {
-        if (doc && doc.exists) {
-          const testi = doc.data();
-          console.log(testi);
-          testi.mahtierat--;
-          console.log(testi);
-          docRef.update({
-            mahtierat: testi.mahtierat
-          }).then(function () {
-            console.log("Saved to db");
-
-          }).catch(function (error) {
-            console.log("Got an error", error);
-
-          });
-
-        }
-      })
-
-    });
-
-    //Vieras
-
-    $("#vieraspisteplus").click(function () {
-
-
-      docRef.get().then(function (doc) {
-        if (doc && doc.exists) {
-          const testi = doc.data();
-          console.log(testi);
-          testi.vieraspisteet++;
-          console.log(testi);
-          docRef.update({
-            vieraspisteet: testi.vieraspisteet
-          }).then(function () {
-            console.log("Saved to db");
-
-          }).catch(function (error) {
-            console.log("Got an error", error);
-
-          });
-
-        }
-      })
-
-    });
-
-    $("#vieraspisteminus").click(function () {
-      docRef.get().then(function (doc) {
-        if (doc && doc.exists) {
-          const testi = doc.data();
-          console.log(testi);
-          testi.vieraspisteet--;
-          console.log(testi);
-          docRef.update({
-            vieraspisteet: testi.vieraspisteet
-          }).then(function () {
-            console.log("Saved to db");
-
-          }).catch(function (error) {
-            console.log("Got an error", error);
-
-          });
-
-        }
-      })
-
-    });
-
-    $("#vieraseraplus").click(function () {
-
-
-      docRef.get().then(function (doc) {
-        if (doc && doc.exists) {
-          const testi = doc.data();
-          console.log(testi);
-          testi.vieraserat++;
-          console.log(testi);
-          docRef.update({
-            vieraserat: testi.vieraserat
-          }).then(function () {
-            console.log("Saved to db");
-
-          }).catch(function (error) {
-            console.log("Got an error", error);
-
-          });
-
-        }
-      })
-
-    });
-
-    $("#vieraseraminus").click(function () {
-
-      // console.log("PAINETTU");
-
-      docRef.get().then(function (doc) {
-        if (doc && doc.exists) {
-          const testi = doc.data();
-          console.log(testi);
-          testi.vieraserat--;
-          console.log(testi);
-          docRef.update({
-            vieraserat: testi.vieraserat
-          }).then(function () {
-            console.log("Saved to db");
-
-          }).catch(function (error) {
-            console.log("Got an error", error);
-
-          });
-        }
-
-
-      })
-
-    });
-
-
-
-    //nollaus
-
-    $("#nollauskaikki").click(function () {
-
-      // console.log("PAINETTU");
-
-
-
-
-      docRef.update({
-        mahtipisteet: 0,
-        mahtierat: 0,
-        vieraserat: 0,
-        vieraspisteet: 0
-
-      }).then(function () {
-        console.log("Saved to db");
-
-      }).catch(function (error) {
-        console.log("Got an error", error);
-
+    
+      $("#mahtipisteplus").click(function () {
+
+
+        docRef.get().then(function (doc) {
+          if (doc && doc.exists) {
+            const testi = doc.data();
+            console.log(testi);
+            testi.mahtipisteet++;
+            console.log(testi);
+            docRef.update({
+              mahtipisteet: testi.mahtipisteet
+            }).then(function () {
+              console.log("Saved to db");
+  
+            }).catch(function (error) {
+              console.log("Got an error", error);
+  
+            });
+          }
+  
+  
+        })
+  
+  
+  
+  
+  
+  
+        // database.ref('Mahti/1').pisteet 
+  
       });
-
-
-    });
-
-    $("#nollauspisteet").click(function () {
-      docRef.update({
-        mahtipisteet: 0,
-        
-        vieraspisteet: 0
-
-      }).then(function () {
-        console.log("Saved to db");
-
-      }).catch(function (error) {
-        console.log("Got an error", error);
-
+  
+      $("#mahtipisteminus").click(function () {
+        docRef.get().then(function (doc) {
+          if (doc && doc.exists) {
+            const testi = doc.data();
+            console.log(testi);
+            testi.mahtipisteet--;
+            console.log(testi);
+            docRef.update({
+              mahtipisteet: testi.mahtipisteet
+            }).then(function () {
+              console.log("Saved to db");
+  
+            }).catch(function (error) {
+              console.log("Got an error", error);
+  
+            });
+  
+          }
+        })
+  
+  
       });
-    });
+  
+      $("#mahtieraplus").click(function () {
+        docRef.get().then(function (doc) {
+          if (doc && doc.exists) {
+            const testi = doc.data();
+            console.log(testi);
+            testi.mahtierat++;
+            console.log(testi);
+            docRef.update({
+              mahtierat: testi.mahtierat
+            }).then(function () {
+              console.log("Saved to db");
+  
+            }).catch(function (error) {
+              console.log("Got an error", error);
+  
+            });
+  
+          }
+        })
+  
+  
+      });
+  
+      $("#mahtieraminus").click(function () {
+        docRef.get().then(function (doc) {
+          if (doc && doc.exists) {
+            const testi = doc.data();
+            console.log(testi);
+            testi.mahtierat--;
+            console.log(testi);
+            docRef.update({
+              mahtierat: testi.mahtierat
+            }).then(function () {
+              console.log("Saved to db");
+  
+            }).catch(function (error) {
+              console.log("Got an error", error);
+  
+            });
+  
+          }
+        })
+  
+      });
+  
+      //Vieras
+  
+      $("#vieraspisteplus").click(function () {
+  
+  
+        docRef.get().then(function (doc) {
+          if (doc && doc.exists) {
+            const testi = doc.data();
+            console.log(testi);
+            testi.vieraspisteet++;
+            console.log(testi);
+            docRef.update({
+              vieraspisteet: testi.vieraspisteet
+            }).then(function () {
+              console.log("Saved to db");
+  
+            }).catch(function (error) {
+              console.log("Got an error", error);
+  
+            });
+  
+          }
+        })
+  
+      });
+  
+      $("#vieraspisteminus").click(function () {
+        docRef.get().then(function (doc) {
+          if (doc && doc.exists) {
+            const testi = doc.data();
+            console.log(testi);
+            testi.vieraspisteet--;
+            console.log(testi);
+            docRef.update({
+              vieraspisteet: testi.vieraspisteet
+            }).then(function () {
+              console.log("Saved to db");
+  
+            }).catch(function (error) {
+              console.log("Got an error", error);
+  
+            });
+  
+          }
+        })
+  
+      });
+  
+      $("#vieraseraplus").click(function () {
+  
+  
+        docRef.get().then(function (doc) {
+          if (doc && doc.exists) {
+            const testi = doc.data();
+            console.log(testi);
+            testi.vieraserat++;
+            console.log(testi);
+            docRef.update({
+              vieraserat: testi.vieraserat
+            }).then(function () {
+              console.log("Saved to db");
+  
+            }).catch(function (error) {
+              console.log("Got an error", error);
+  
+            });
+  
+          }
+        })
+  
+      });
+  
+      $("#vieraseraminus").click(function () {
+  
+        // console.log("PAINETTU");
+  
+        docRef.get().then(function (doc) {
+          if (doc && doc.exists) {
+            const testi = doc.data();
+            console.log(testi);
+            testi.vieraserat--;
+            console.log(testi);
+            docRef.update({
+              vieraserat: testi.vieraserat
+            }).then(function () {
+              console.log("Saved to db");
+  
+            }).catch(function (error) {
+              console.log("Got an error", error);
+  
+            });
+          }
+  
+  
+        })
+  
+      });
+  
+  
+  
+      //nollaus
+  
+      $("#nollauskaikki").click(function () {
+  
+        // console.log("PAINETTU");
+  
+  
+  
+  
+        docRef.update({
+          mahtipisteet: 0,
+          mahtierat: 0,
+          vieraserat: 0,
+          vieraspisteet: 0
+  
+        }).then(function () {
+          console.log("Saved to db");
+  
+        }).catch(function (error) {
+          console.log("Got an error", error);
+  
+        });
+  
+  
+      });
+  
+      $("#nollauspisteet").click(function () {
+        docRef.update({
+          mahtipisteet: 0,
+          
+          vieraspisteet: 0
+  
+        }).then(function () {
+          console.log("Saved to db");
+  
+        }).catch(function (error) {
+          console.log("Got an error", error);
+  
+        });
+      });
+    
+
+    
 
 
 
