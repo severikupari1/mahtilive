@@ -9,12 +9,14 @@
       };
       firebase.initializeApp(config);
 
-      var firestore = firebase.firestore();
 
+      var firestore = firebase.firestore();
+      const settings = {/* your settings... */ timestampsInSnapshots: true};
+      firestore.settings(settings);
   const mahtipisteplus1 = document.querySelector("#mahtipisteplus");
 
   const docRef = firestore.doc("Mahti/peli");
-     
+ 
 
 
   $( document ).ready(function() {
