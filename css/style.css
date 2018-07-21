@@ -979,10 +979,31 @@ body.mobile-nav-active #mobile-nav-toggle {
   }
 }
 
-.min-height-200px {
 
-}
 
 .ympyra {
 	border-radius: 20%;
+}
+
+.koko100{
+  min-height: 100px !important;
+  min-width: 100px !important;
+}
+.circle-custom{
+  
+  width: 25px;
+  width: 25px;
+  background-color: red;
+  border-radius: 50%;
+  display: inline-block;
+  color: white;
+}
+.circle-custom1{
+  
+  width: 25px;
+  width: 25px;
+  background-color: blue;
+  border-radius: 50%;
+  display: inline-block;
+  color: white;
 }

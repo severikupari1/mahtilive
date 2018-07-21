@@ -22,6 +22,8 @@
   <meta name="twitter:description" content="">
   <meta name="twitter:image" content="">
 
+<link rel="manifest" href="/manifest.json">
+
   <!-- Favicon -->
  <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
@@ -53,10 +55,33 @@
   <!-- Main Stylesheet File -->
   <link href="css/style.css" rel="stylesheet">
 
+<<<<<<< HEAD
  
+=======
+  
+>>>>>>> firebase
 </head>
 
 <body>
+<!-- Firebase App is always required and must be first -->
+<script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-app.js"></script>
+
+<!-- Add additional services that you want to use -->
+<script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-messaging.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-functions.js"></script>
+
+<!-- Comment out (or don't include) services that you don't want to use -->
+<!-- <script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-storage.js"></script> -->
+<!-- firebase -->
+    <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
+    
+
+    <!-- firebase -->
+
+
   <!-- Page Content
     ================================================== -->
   <!-- Hero -->
@@ -99,7 +124,7 @@
           <li><a href="#about">Peliin!</a></li>
           
           <li><a href="#team">Joukkue</a></li>
-          
+          <li><a href="login.html">Kirjaudu Sisään</a></li>
           
         </ul>
       </nav>
@@ -129,7 +154,34 @@
 						
 						</div>
       
+            
 
+<<<<<<< HEAD
+=======
+
+            <div class="row">
+              <div class="col-6">Mahti pisteet</div>
+              <div class="col-6">Vieras pisteet</div>
+            </div>
+            <div class="row">
+              <div class="col-6" ><p id="mahtipistekenttaindex" class="circle-custom"></p> </div>
+              <div class="col-6" ><p id="vieraspistekenttaindex" class="circle-custom1"></p></div>
+            </div>
+            
+            <div class="row">
+              <div class="col-6">Mahti erät</div>
+              <div class="col-6">Vieras erät</div>
+            </div>
+            <div class="row">
+              <div class="col-6"><p id="mahtieratkenttaindex" class="circle-custom">0</p> </div>
+              <div class="col-6"><p class="circle-custom1" id="vieraseratkenttaindex"></p></div>
+            </div>
+
+            <div class="row mt-5">
+              <div class="col-12">Tilannetta päivitetään jos mahdollista, ja on testausvaiheessa, vapaaehtoiset ottakee yhteyttä maaninganmahtilive@gmail.com, jos haluatte auttaa tilanteen päivittelyssä.</div>
+            </div>
+     
+>>>>>>> firebase
 
     </div>
   </section>
@@ -343,6 +395,9 @@
   <script src="js/custom.js"></script>
 
   <script src="contactform/contactform.js"></script>
+
+  <!-- firebase -->
+  <script src="index.js"></script>
 
 </body>
 </html>
