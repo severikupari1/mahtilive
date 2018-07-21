@@ -332,6 +332,14 @@
       });
     
 
+      $("#logout").click(function (){
+        firebase.auth().signOut().then(function() {
+          // Sign-out successful.
+          window.location.href = "index.html"
+        }, function(error) {
+          // An error happened.
+        });
+      });
     
 
 
